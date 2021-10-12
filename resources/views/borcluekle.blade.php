@@ -28,9 +28,9 @@
   <form action="{{route('borcluekle')}}" method="post">
     @csrf
 
-  <div class="borcortala">
+  <div class="card card-info" style=" width: 300px; height: 650px;">
               <div class="card-header">
-                <h2 class="card-title">Borç Bilgileri</h2>
+                <h2 class="card-title">Borçlu Bilgileri</h2>
               </div>
               <div class="card-body">
 

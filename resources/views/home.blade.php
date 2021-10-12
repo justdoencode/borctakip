@@ -227,6 +227,13 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('assets')}}/dist/js/pages/dashboard.js"></script>
 
+<script src="{{asset('assets')}}/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="{{asset('assets')}}/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<script src="{{asset('assets')}}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="{{asset('assets')}}/plugins/inputmask/jquery.inputmask.min.js"></script>
+<script src="{{asset('assets')}}/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="{{asset('assets')}}/plugins/jquery/jquery.min.js"></script>
+
 @yield('js')
 </body>
 </html>

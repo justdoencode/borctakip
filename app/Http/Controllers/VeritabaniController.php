@@ -29,20 +29,29 @@ class VeritabaniController extends Controller
   //Borç Eklemek İçin
   public function borcEkle(Request $borc){
 
+    //Yeni Borcun Borçluya Eklenmesi
+    $id=$borc->id;//Seçilen Kişini id numarası
+    $borclu=BorclularModel::find($id);//Seçilen kişi veritabanından bulundu
 
-    $bocluKisi=BorclularModel::find($borc->id);
-    return $borcluKisi->ad;
+    $toplamBorcData=$borclu->toplamborc;
+    $yeniBorc=$borc->borcTutari+$toplamBorcData;//Yeni gelen borc+veritabanındaki toplam borç toplandı
+
+    BorclularModel::where('id',$id)->update([
+      'toplamborc'=>$yeniBorc,
+    ]);
 
     //Borçlar Veritabanına Ekler
-    /*BorcModel::create([
-      "borclu"=>$borc->isim,
+
+    $isim=$borclu->ad." ".$borclu->soyad;
+    BorcModel::create([
+      "borclu"=>$isim,
       "borc_baslangic_tarihi"=>$borc->borcBaslangic,
       "borc_bitis_tarihi"=>$borc->borcBitis,
       "para_turu"=>$borc->paraTuru,
       "borc_miktari"=>$borc->borcTutari,
       "aciklama"=>$borc->aciklama,
     ]);
-    return redirect()->route('borclarpage');*/
+    return redirect()->route('borclarpage');
 
   }
   /////////////////////////////////////////////////////////////////////
