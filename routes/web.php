@@ -16,12 +16,19 @@ use App\Http\Controllers\VeritabaniController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
+
+
+//BorcController
 Route::get('/home',[BorcController::class,'home'])->name('home');
 
-Route::get('/borcluekle',[BorcController::class,'borcluEkle'])->name('borcluekle');
+Route::get('/borclueklepage',[BorcController::class,'borcluEklePage'])->name('borclueklepage');
+
+Route::get('/paraturueklepage',[BorcController::class,'paraTuruEklePage'])->name('paraturueklepage');
+
+
 
 
 
@@ -34,8 +41,10 @@ Route::post('/borcekle',[VeritabaniController::class,'borcEkle'])->name('borcekl
 
 Route::get('/borclarpage',[VeritabaniController::class,'borclarPage'])->name('borclarpage');//Veritabanından Borçları Çekerek Listeliyor
 
-Route::get('/borcsil/{id}',[VeritabaniController::class,'borcSil'])->name('borcsil');//Borç Silmek İçin
+Route::get('/borcsil/{borc_id}',[VeritabaniController::class,'borcSil'])->name('borcsil');//Borç Silmek İçin
 
 Route::get('/borclularpage',[VeritabaniController::class,'borclularPage'])->name('borclularpage');//Borçlular Sayfasına Gitme ve Listeleme
 
-Route::get('/borclusil/{id}',[VeritabaniController::class,'borcluSil'])->name('borclusil');//Borçlu Silmek İçin
+Route::post('/paraturuekle}',[VeritabaniController::class,'paraTuruEkle'])->name('paraturuekle');//Para Türü Eklemek İçin
+
+Route::get('/borclusil/{borclu_id}}',[VeritabaniController::class,'borcluSil'])->name('borclusil');//Para Türü Eklemek İçin

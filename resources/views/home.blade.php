@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AdminLTE 3 | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -144,7 +144,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('borcluekle')}}" class="nav-link">
+                <a href="{{route('borclueklepage')}}" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>Borçlu Ekle</p>
                 </a>

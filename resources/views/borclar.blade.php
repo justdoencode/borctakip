@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -128,7 +129,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('borcluekle')}}" class="nav-link">
+                <a href="{{route('borclueklepage')}}" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>Borçlu Ekle</p>
                 </a>
@@ -177,6 +178,11 @@
           <div class="col-12">
             <div class="card">
             <div class="card">
+              @if(session()->has('successMessage'))
+                <div class="alert alert-success">
+                  {{ session()->get('successMessage') }}
+                </div>
+              @endif
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -194,14 +200,14 @@
                   <tbody>
                     @foreach ($veriler as $veri)
                       <tr>
-                        <td class="ortala">{{$veri->borclu}}</td>
-                        <td class="ortala">{{$veri->borc_baslangic_tarihi}}</td>
-                        <td class="ortala">{{$veri->borc_bitis_tarihi}}</td>
-                        <td class="ortala">{{$veri->borc_miktari}}</td>
-                        <td class="ortala">{{$veri->para_turu}}</td>
-                        <td class="ortala">{{$veri->aciklama}}</td>
+                            <td class="ortala">{{$veri->getBorclu->borclu_ad." ".$veri->getBorclu->borclu_soyad}}</td>
+                            <td class="ortala">{{$veri->borc_baslangic_tarihi}}</td>
+                            <td class="ortala">{{$veri->borc_bitis_tarihi}}</td>
+                            <td class="ortala">{{$veri->borc_miktari}}</td>
+                            <td class="ortala">{{$veri->getParaTuru->para_adi}}</td>
+                            <td class="ortala">{{$veri->aciklama}}</td>
 
-                        <td class="ortala"><a href="{{route('borcsil',['id'=>$veri->id])}}" class="btn btn-sm btn-danger">Sil</a></td>
+                            <td class="ortala"><a href="{{route('borcsil',['borc_id'=>$veri->borc_id])}}" class="btn btn-sm btn-danger">Sil</a></td>
 
                       </tr>
                     @endforeach

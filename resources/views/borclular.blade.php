@@ -128,7 +128,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('borcluekle')}}" class="nav-link">
+                <a href="{{route('borclueklepage')}}" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>Borçlu Ekle</p>
                 </a>
@@ -174,11 +174,21 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
+          <div>
             <div class="card">
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
+                @if(session()->has('errorMessage'))
+                  <div class="alert alert-danger">
+                    {{ session()->get('errorMessage') }}
+                  </div>
+                @endif
+                @if(session()->has('successMessage'))
+                  <div class="alert alert-success">
+                    {{ session()->get('successMessage') }}
+                  </div>
+                @endif
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                       <tr class="ortala">
@@ -187,27 +197,30 @@
                         <th class="ortala">Telefon</th>
                         <th class="ortala">Adres</th>
                         <th class="ortala">Kurum</th>
-                        <th class="ortala">Toplam Borç</th>
+                        <th class="ortala">Toplam TL Borç</th>
+                        <th class="ortala">Toplam Dolar Borç</th>
                         <th class="ortala">Sil</th>
                       </tr>
                   </thead>
                   <tbody>
                     @foreach ($veriler as $veri)
                       <tr>
-                        <td class="ortala">{{$veri->ad}}</td>
-                        <td class="ortala">{{$veri->soyad}}</td>
-                        <td class="ortala">{{$veri->telefon}}</td>
-                        <td class="ortala">{{$veri->adres}}</td>
-                        <td class="ortala">{{$veri->kurum}}</td>
-                        <td class="ortala">{{$veri->toplamborc}}</td>
+                        <td class="ortala">{{$veri->borclu_ad}}</td>
+                        <td class="ortala">{{$veri->borclu_soyad}}</td>
+                        <td class="ortala">{{$veri->borclu_telefon}}</td>
+                        <td class="ortala">{{$veri->borclu_adres}}</td>
+                        <td class="ortala">{{$veri->borclu_kurum}}</td>
+                        <td class="ortala">{{$veri->toplam_tl_borc}}</td>
+                        <td class="ortala">{{$veri->toplam_dolar_borc}}</td>
 
-                        <td class="ortala"><a href="{{route('borclusil',['id'=>$veri->id])}}" class="btn btn-sm btn-danger">Sil</a></td>
+                        <td class="ortala"><a href="{{route('borclusil',['borclu_id'=>$veri->borclu_id])}}" class="btn btn-sm btn-danger">Sil</a></td>
 
                       </tr>
                     @endforeach
 
                   </tbody>
                 </table>
+
               </div>
               <!-- /.card-body -->
             </div>
@@ -223,15 +236,8 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-    </div>
     <strong>Design : <a href="https://www.elitbil.com">Elit Bilişim</a></strong>
   </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->

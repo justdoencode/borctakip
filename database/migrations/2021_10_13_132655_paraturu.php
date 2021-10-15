@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Borclular extends Migration
+class Paraturu extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class Borclular extends Migration
      */
     public function up()
     {
-        Schema::create('borclular', function (Blueprint $table) {
-            $table->id();
-            $table->string('ad');
-            $table->string('soyad');
-            $table->numeric('telefon');
-            $table->text('adres');
-            $table->string('kurum');
-            $table->integer('toplamborc');
+        Schema::create('ParaTuru', function (Blueprint $table) {
+            $table->increments('para_id');
+            $table->string('para_adi');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class Borclular extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('borclular');
+        Schema::dropIfExists('ParaTuru');
     }
 }

@@ -10,7 +10,7 @@ class BorcController extends Controller
       return view('home');
     }
 
-    public function borcluEkle(){
+    public function borcluEklePage(){
       return view('borcluekle');
     }
 

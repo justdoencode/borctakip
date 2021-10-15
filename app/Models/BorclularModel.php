@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class BorclularModel extends Model
 {
     use HasFactory;
-    protected $table='borclular';
-    protected $fillable=["ad","soyad","telefon","adres","kurum","toplamborc","created_at","updated_at"];
+    protected $primaryKey='borclu_id';
+    protected $table='Borclular';
+    protected $fillable=['borclu_ad','borclu_soyad','borclu_telefon','borclu_adres','borclu_kurum','toplam_tl_borc','toplam_dolar_borc'];
+
+    
 }

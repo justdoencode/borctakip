@@ -33,15 +33,20 @@
               <div class="card-header">
                 <h2 class="card-title">Borç Bilgileri</h2>
               </div>
-              <div class="card-body">
 
+              <div class="card-body">
+                @if(session()->has('successMessage'))
+                  <div class="alert alert-success">
+                    {{ session()->get('successMessage') }}
+                  </div>
+                @endif
 
                 <!-- select -->
                 <div class="form-group">
                   <label>İsim :</label>
-                  <select class="form-control select2bs4" style="width: 100%;" name="id">
+                  <select class="form-control select2bs4" style="width: 100%;" name="borclu_id">
                     @foreach ($veriler as $veri)
-                      <option value="{{$veri['id']}}">{{$veri['ad']." ".$veri['soyad']." (".$veri['kurum'].")"}}</option>
+                      <option value="{{$veri['borclu_id']}}">{{$veri['borclu_ad']." ".$veri['borclu_soyad']." (".$veri['borclu_kurum'].")"}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -79,9 +84,10 @@
                       <!-- select -->
                       <div class="form-group">
                         <label>Para Türü</label>
-                        <select class="form-control" name="paraTuru">
-                          <option>TL</option>
-                          <option>Dolar</option>
+                        <select class="form-control" name="para_id">
+                          @foreach ($paraTurleri as $paraTuru)
+                            <option value="{{$paraTuru['para_id']}}">{{$paraTuru['para_adi']}}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
